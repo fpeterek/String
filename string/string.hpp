@@ -43,6 +43,9 @@ public:
     void append(const string & str);
     void operator+=(const string & str);
     
+    void append(const char c);
+    void operator+=(const char c);
+    
     string concatenate(const char * str)   const;
     string operator+(const char * str)     const;
     string concatenate(const string & str) const;

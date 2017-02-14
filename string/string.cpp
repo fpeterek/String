@@ -41,8 +41,13 @@ size_t string::length() const {
 
 void string::assign(const char * str) {
     
+    if (str == c_str) {
+        return;
+    }
+    
     mem_alloc(strlen(str) + 1);
     strcpy(c_str, str);
+    c_str[length()] = '\0';
     
 }
 
@@ -75,6 +80,15 @@ void string::append(const string & str) {
 
 void string::operator+=(const string & str) {
     append(str.c_string());
+}
+
+void string::append(const char c) {
+    const char temp[2] = { c, '\0' };
+    append(temp);
+}
+
+void string::operator+=(const char c) {
+    append(c);
 }
 
 string string::concatenate(const char * str) const {
